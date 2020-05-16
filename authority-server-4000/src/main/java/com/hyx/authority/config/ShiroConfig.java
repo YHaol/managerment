@@ -55,12 +55,7 @@ public class ShiroConfig {
         //需要登录认证
         filterChainDefinitionMap.put("/menu/*", "noSessionCreation,jwtflter");
         filterChainDefinitionMap.put("/user/*", "noSessionCreation,jwtflter");
-
-        // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
-//        shiroFilterFactoryBean.setLoginUrl("/test");
-        // 登录成功后要跳转的链接
-        //shiroFilterFactoryBean.setSuccessUrl("http://localhost:8080/#/home");
-
+        filterChainDefinitionMap.put("/goods/*", "noSessionCreation,jwtflter");
         //未授权界面;
         //shiroFilterFactoryBean.setUnauthorizedUrl("/home/403");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);

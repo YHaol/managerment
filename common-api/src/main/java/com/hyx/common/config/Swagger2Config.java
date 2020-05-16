@@ -15,6 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * @author : xiaolang
  * @date ：Created in 2020/4/16 11:31
+ *
  */
 
 @Configuration
@@ -23,11 +24,10 @@ public class Swagger2Config {
 
     @Bean
     public Docket createRestApi() {
-        String name = "com.hyx.authority.controller";
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage(name))
+                .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -41,5 +41,4 @@ public class Swagger2Config {
                 .version("1.0")
                 .build();
     }
-
 }

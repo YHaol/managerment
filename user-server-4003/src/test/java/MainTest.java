@@ -2,7 +2,6 @@ import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
 import com.baomidou.mybatisplus.generator.config.GlobalConfig;
@@ -11,24 +10,13 @@ import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import com.hyx.user.entity.SpUser;
-import com.hyx.user.mapper.SpUserMapper;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.Resource;
 import java.util.Scanner;
 /**
  * @author : xiaolang
  * @date ：Created in 2020/4/15 17:09
  */
-@SpringBootTest
 public class MainTest {
-
-    private static String moudleName = "/user-server-4003";
 
     /**
      * <p>
@@ -50,6 +38,7 @@ public class MainTest {
     }
 
     public static void main(String[] args) {
+        String moudleName = "/user-server-4003";
         // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
 
@@ -80,17 +69,19 @@ public class MainTest {
         PackageConfig pc = new PackageConfig();
         //pc.setModuleName(scanner("user-server-4003"));
         pc.setParent("com.hyx.user");
-        pc.setEntity("entity");
+        pc.setEntity("entities");
         pc.setService("service");
         pc.setController("controller");
         mpg.setPackageInfo(pc);
 
+
+        String table = "sp_role";
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
-        strategy.setInclude(scanner("表名"));
+        strategy.setInclude(table);
         strategy.setControllerMappingHyphenStyle(true);
         mpg.setStrategy(strategy);
         // 选择 freemarker 引擎需要指定如下加，注意 pom 依赖必须有！

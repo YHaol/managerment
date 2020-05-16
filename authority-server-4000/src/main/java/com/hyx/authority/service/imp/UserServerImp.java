@@ -11,7 +11,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServerImp implements UserService {
     @Override
-    public CommonResult getUserList() {
+    public CommonResult getUserList(int current,int page) {
+        return new CommonResult<>(400,"请求超时","请求超时");
+    }
+
+    @Override
+    public CommonResult getPermissionList(int current, int size) {
+        return new CommonResult<>(400,"请求超时","请求超时");
+    }
+
+    @Override
+    public CommonResult getRoleList() {
         return new CommonResult<>(400,"请求超时","请求超时");
     }
 }
